@@ -70,7 +70,7 @@
     <td>Have a Search Bar to query notes based on text/user name</td>
     <td>- Add Search Bar to UI,
       <br> - Use query to get remarkId from inputed text (note/ user name)</td>
-    <td>Not yet build</td>
+    <td>Not yet</td>
     <td></td>
   </tr>
   
