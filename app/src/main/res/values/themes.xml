@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!-- Base application theme. -->
+<style name="Theme.LandmarkRemark" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <!-- Primary brand color. -->
+    <!-- Customize your theme here. -->
+</style>
 
-    <style name="Theme.LandmarkRemark" parent="android:Theme.Material.Light.NoActionBar" />
+<style name="Theme.LandmarkRemark.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+</style>
+
+<style name="Theme.LandmarkRemark.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+<style name="Theme.LandmarkRemark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

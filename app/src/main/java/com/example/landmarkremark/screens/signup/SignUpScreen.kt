@@ -60,6 +60,7 @@ fun SignUpScreen(
             )
             Row(
                 horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_large))
             ) {
                 DescriptionButton(
                     enabled = true,

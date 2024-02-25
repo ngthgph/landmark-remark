@@ -18,7 +18,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.landmarkremark.R
 import kotlinx.coroutines.launch
 
@@ -27,11 +27,9 @@ import kotlinx.coroutines.launch
 fun MapScreen(
     onAccount: () -> Unit,
     modifier: Modifier = Modifier,
+    viewModel: MapViewModel = hiltViewModel()
 ) {
-
-    val viewModel: MapViewModel = viewModel(factory = MapViewModel.Factory)
-
-        val uiState = viewModel.uiState.collectAsState().value
+    val uiState = viewModel.uiState.collectAsState().value
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = rememberStandardBottomSheetState(
             initialValue = SheetValue.Hidden,
