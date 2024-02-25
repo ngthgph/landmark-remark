@@ -1,4 +1,4 @@
-package com.example.landmarkremark.ui.theme
+package com.example.landmarkremark.theme
 
 import android.app.Activity
 import android.os.Build

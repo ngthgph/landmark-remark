@@ -1,4 +1,4 @@
-package com.example.landmarkremark.ui
+package com.example.landmarkremark.screens.map
 
 import android.Manifest
 import android.content.ContentValues.TAG
@@ -40,9 +40,9 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @Composable
-fun MapScreen(
-    viewModel: LandmarkViewModel,
-    uiState: LandmarkUiState,
+fun GoogleMapWindow(
+    viewModel: MapViewModel,
+    uiState: MapUiState,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current

@@ -1,4 +1,4 @@
-package com.example.landmarkremark.ui.theme
+package com.example.landmarkremark.theme
 
 import androidx.compose.ui.graphics.Color
 

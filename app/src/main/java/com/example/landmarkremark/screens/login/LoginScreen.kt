@@ -1,10 +1,9 @@
-package com.example.landmarkremark.ui
+package com.example.landmarkremark.screens.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
@@ -16,7 +15,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -37,34 +35,14 @@ import androidx.compose.ui.unit.dp
 import com.example.landmarkremark.R
 
 @Composable
-fun AccountScreen(
-    modifier: Modifier = Modifier,
-) {
-    AccountContent(
-        modifier = modifier,
-    )
-}
-
-@Composable
-fun AccountContent(
-
-    modifier: Modifier = Modifier
-) {
-    Surface(
-        modifier = modifier.fillMaxSize()
-    ) {
-        SignInScreen()
-    }
-}
-
-@Composable
-fun SignInScreen(
+fun LoginScreen(
+    signUp: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier,
+        modifier = modifier.padding(top = dimensionResource(id = R.dimen.padding_extra_large)),
     ) {
         Text(
             text = "Sign in to Your Account",
@@ -116,7 +94,7 @@ fun SignInScreen(
             ClickableText(
                 enabled = false,
                 text = stringResource(R.string.sign_up),
-                onClick = {}
+                onClick = signUp
             )
         }
     }

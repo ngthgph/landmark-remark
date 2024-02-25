@@ -1,4 +1,4 @@
-package com.example.landmarkremark.ui
+package com.example.landmarkremark.screens.map
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,9 +24,12 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LandmarkRemarkApp() {
+fun MapScreen(
+    onAccount: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
 
-    val viewModel: LandmarkViewModel = viewModel(factory = LandmarkViewModel.Factory)
+    val viewModel: MapViewModel = viewModel(factory = MapViewModel.Factory)
 
         val uiState = viewModel.uiState.collectAsState().value
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
@@ -50,6 +53,7 @@ fun LandmarkRemarkApp() {
                 bottomSheetScaffoldState.bottomSheetState.hide()
             }
         },
+        modifier = modifier
     ) {
         Scaffold(
             topBar ={
@@ -61,11 +65,11 @@ fun LandmarkRemarkApp() {
                                 bottomSheetScaffoldState.bottomSheetState.expand()
                             }
                         },
-                        onAccount = {}
+                        onAccount = onAccount
                     )
             }
         ) { contentPadding ->
-            MapScreen(
+            GoogleMapWindow(
                 viewModel = viewModel,
                 uiState = uiState,
                 modifier = Modifier.padding(contentPadding)

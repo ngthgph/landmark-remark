@@ -1,4 +1,4 @@
-package com.example.landmarkremark.ui
+package com.example.landmarkremark.screens.map
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
