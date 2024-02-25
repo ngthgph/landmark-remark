@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270178507740",
+    "project_id": "landmark-remark-415115",
+    "storage_bucket": "landmark-remark-415115.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270178507740:android:33375badf7c86c0ac30d19",
+        "android_client_info": {
+          "package_name": "com.example.landmarkremark"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh8F2KjvGTQDoHKezReze1anVt-lr1orY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
