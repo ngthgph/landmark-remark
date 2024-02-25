@@ -1,22 +1,22 @@
 <h1>Landmark Remark Project</h1>
 <h2>Description</h2>
-<p>The Android native application written in Kotlin, utilizing the Jetpack Compose toolkit, allows users to save location-based notes on the map.</p>
+<p>An Android Native Application written in Kotlin, utilizing the Jetpack Compose toolkit, allows users to save location-based notes on the map.</p>
 <p><b>Tech stack: </b>  Android Studio, Kotlin, Jetpack Compose, Maps Compose, Coroutines, Firebase, Hilt </p>
 <p></p>
-<h2>User Stories</h2>
+<h2>Outline</h2>
 <table>
   <tr>
     <th width="5%">No</th>
-    <th width="15%">Backlog</th>
+    <th width="20%">Backlog</th>
     <th width="20%">Requirement</th>
     <th width="35%">Step</th>
-    <th width="20%">Problem</th>
-    <th width="5%">Tech Stack</th>
+    <th width="15%">Problem</th>
+    <th width="5%">Tech Stack/<br> Timing</th>
   </tr>
   
   <tr>
     <td>1</td>
-    <td>As a user (of the application) I can see my current location on a map</td>
+    <td>As a user (of the application) I can see my current location on a map </td>
     <td>Add Google Map screen to the UI with camera position at the current location</td>
     <td>- Get Map API key
       <br> - Add Manifest permissions
@@ -25,7 +25,7 @@
       <br> - Add ViewModel, UiState
       <br> - Add GoogleMap, Button composable (button to launch permission request if needed)</td>
     <td></td>
-    <td>Maps Compose</td>
+    <td>Maps Compose <div> <br><b>6 hours</b></td>
   </tr>
   
   <tr>
@@ -39,7 +39,7 @@
       <br> - Create a Bottom Sheet to add/edit note
       <br> - Save the note linking with its Latlng</td>
     <td>- Cannot handle onClick on Marker, have to add otherwhere button and separate Sheet</td>
-    <td>Maps Compose, Room/Firebase</td>
+    <td>Maps Compose, Room/Firebase <div> <br><b>18 hours</b></td>
   </tr>
   
   <tr>
@@ -48,7 +48,7 @@
     <td>Show all Markers have been saved in the Google Map at the responding location</td>
     <td>- Show Markers in Google Map for the list of saved note</td>
     <td></td>
-    <td>Maps Compose</td>
+    <td>Maps Compose <div> <br><b>1 hours</b></td>
   </tr>
   
   <tr>
@@ -59,8 +59,9 @@
     <td>- Build UI for creating accounts: LoginScreen, SignUpScreen, AccountScreen
       <br> - Add Firebase Account Service
       <br> - Show Markers in Google Map for the list of saved notes of all users</td>
-    <td>- (Firebase) The document cannot be added to the collection (can only create an anonymous account)</td>
-    <td>Firebase, Hilt</td>
+    <td>- (Firebase) The document cannot be added to the collection
+      <br> - Can only create an anonymous account</td>
+    <td>Firebase, Hilt <div> <br><b>10 hours</b></td>
   </tr>
   
   <tr>
