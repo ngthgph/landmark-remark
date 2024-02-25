@@ -45,7 +45,7 @@ fun LoginScreen(
         modifier = modifier.padding(top = dimensionResource(id = R.dimen.padding_extra_large)),
     ) {
         Text(
-            text = "Sign in to Your Account",
+            text = stringResource(R.string.sign_in_to_your_account),
             style = MaterialTheme.typography.displaySmall,
             textAlign = TextAlign.Start,
             modifier = Modifier
@@ -92,7 +92,7 @@ fun LoginScreen(
             )
             Text(text = " / ")
             ClickableText(
-                enabled = false,
+                enabled = true,
                 text = stringResource(R.string.sign_up),
                 onClick = signUp
             )

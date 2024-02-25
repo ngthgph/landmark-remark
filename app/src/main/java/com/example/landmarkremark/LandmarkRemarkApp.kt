@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.landmarkremark.screens.login.LoginScreen
 import com.example.landmarkremark.screens.map.MapScreen
+import com.example.landmarkremark.screens.signup.SignUpScreen
 
 const val LOGIN_SCREEN = "LoginScreen"
 const val SIGN_UP_SCREEN = "SignUpScreen"
@@ -25,6 +26,9 @@ fun LandmarkRemarkApp() {
         }
         composable(LOGIN_SCREEN) {
             LoginScreen(signUp = { navController.navigate(SIGN_UP_SCREEN) })
+        }
+        composable(SIGN_UP_SCREEN) {
+            SignUpScreen(onCancel = { navController.navigate(MAP_SCREEN) })
         }
     }
 }

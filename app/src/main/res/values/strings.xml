@@ -11,4 +11,8 @@
     <string name="sign_in">Sign In</string>
     <string name="password">Password</string>
     <string name="email_address">Email Address</string>
+    <string name="sign_in_to_your_account">Sign in to Your Account</string>
+    <string name="sign_up_your_account">Sign Up Your Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="cancel">Cancel</string>
 </resources>
