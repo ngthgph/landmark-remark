@@ -3,12 +3,12 @@ package com.example.landmarkremark.model.service.impl
 import com.example.landmarkremark.model.Remark
 import com.example.landmarkremark.model.service.AccountService
 import com.example.landmarkremark.model.service.StorageService
+import com.example.landmarkremark.model.service.trace
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.dataObjects
 import com.google.firebase.firestore.toObject
-import com.google.firebase.perf.trace
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -58,7 +58,7 @@ class StorageServiceImpl @Inject constructor(
 
     companion object {
         private const val USER_ID = "userId"
-        private const val REMARK_COLLECTION = "remark"
+        private const val REMARK_COLLECTION = "remarks"
         private const val CREATED_AT_FIELD = "createdAt"
         private const val LOCATION = "latLng"
         private const val SAVE_REMARK_TRACE = "saveRemark"

@@ -46,11 +46,13 @@ fun MapScreen(
             }
         },
         onSave = {
-            //ViewModel.saveNote()
+            viewModel.updateTemporaryRemarkNote(it)
+            uiState.temporaryRemark?.let { remark -> viewModel.onSaveRemark(remark) }
             scope.launch {
                 bottomSheetScaffoldState.bottomSheetState.hide()
             }
         },
+        remark = uiState.temporaryRemark,
         modifier = modifier
     ) {
         Scaffold(
@@ -58,7 +60,6 @@ fun MapScreen(
                     AppBar(
                         isEdit = uiState.selectedLocation != null,
                         onEditNote = {
-                            //ViewModel.updateCurrentNote
                             scope.launch {
                                 bottomSheetScaffoldState.bottomSheetState.expand()
                             }

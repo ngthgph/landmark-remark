@@ -1,5 +1,6 @@
 package com.example.landmarkremark.screens.map
 
+import com.example.landmarkremark.model.Remark
 import com.example.landmarkremark.model.service.LogService
 import com.example.landmarkremark.model.service.StorageService
 import com.example.landmarkremark.screens.LandmarkRemarkViewModel
@@ -28,9 +29,31 @@ class MapViewModel@Inject constructor(
         _uiState.value = MapUiState()
     }
 
-    fun updateSelectedLocation(location: LatLng) {
+    fun updateSelectedLocation(location: LatLng?) {
         _uiState.update { current ->
             current.copy(selectedLocation = location)
+        }
+    }
+    fun updateTemporaryRemark(remark: Remark?) {
+        _uiState.update { current ->
+            current.copy(temporaryRemark = remark)
+        }
+    }
+    fun updateTemporaryRemarkNote(note: String) {
+        val remark = uiState.value.temporaryRemark?.copy(note = note)
+        _uiState.update { current ->
+            current.copy(temporaryRemark = remark)
+        }
+    }
+    fun onSaveRemark(remark: Remark) {
+        launchCatching {
+            if (remark.id.isBlank()) {
+                storageService.save(remark)
+            } else {
+                storageService.update(remark)
+            }
+            updateSelectedLocation(null)
+            updateTemporaryRemark(null)
         }
     }
 }

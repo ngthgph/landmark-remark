@@ -4,7 +4,7 @@
     <string name="delete_note">Delete note</string>
     <string name="save_note">Save note</string>
     <string name="note_title">Note Title</string>
-    <string name="note_content">Note Content</string>
+    <string name="note">Note</string>
     <string name="account">Account</string>
     <string name="forget_password">Forget Password</string>
     <string name="sign_up">Sign Up</string>
@@ -15,4 +15,8 @@
     <string name="sign_up_your_account">Sign Up Your Account</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="cancel">Cancel</string>
+    <string name="account_setting">Account Setting</string>
+    <string name="please_register_or_login_to_be_able_to_save_your_own_data">Please register or login to be able to save your own data</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="delete_my_account">Delete my account</string>
 </resources>

@@ -10,21 +10,25 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.landmarkremark.R
 import com.example.landmarkremark.screens.login.DescriptionButton
 import com.example.landmarkremark.screens.login.InputTextField
 
 @Composable
 fun SignUpScreen(
-    onCancel: () -> Unit,
-    modifier: Modifier = Modifier
+    onReturn: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: SignUpViewModel = hiltViewModel(),
 ) {
+    val uiState by viewModel.uiState
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -45,17 +49,20 @@ fun SignUpScreen(
                 .sizeIn(maxWidth = dimensionResource(id = R.dimen.text_field)),
         ) {
             InputTextField(
-                onInput = {},
+                initial = uiState.email,
+                onValueChange = { viewModel.onEmailChange(it) },
                 placeholder = stringResource(R.string.email_address),
                 modifier = Modifier
                     .sizeIn(maxWidth = dimensionResource(id = R.dimen.text_field) )
             )
             InputTextField(
-                onInput = {},
+                initial = uiState.password,
+                onInput = { viewModel.onPasswordChange(it) },
                 placeholder = stringResource(R.string.password)
             )
             InputTextField(
-                onInput = {},
+                initial = uiState.email,
+                onValueChange = { viewModel.onRepeatPasswordChange(it) },
                 placeholder = stringResource(R.string.confirm_password)
             )
             Row(
@@ -65,13 +72,17 @@ fun SignUpScreen(
                 DescriptionButton(
                     enabled = true,
                     text = stringResource(R.string.cancel),
-                    onClick = onCancel,
+                    onClick = onReturn,
                 )
                 Spacer(modifier = modifier.weight(1f))
                 DescriptionButton(
-                    enabled = false,
+                    enabled = true,
+//                    (uiState.password == uiState.repeatPassword && uiState.password.isNotBlank()),
                     text = stringResource(R.string.sign_up),
-                    onClick = {}
+                    onClick = {
+                        viewModel.onSignUpClick()
+                        onReturn()
+                    }
                 )
             }
         }

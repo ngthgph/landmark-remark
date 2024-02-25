@@ -15,6 +15,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,37 +26,45 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import com.example.landmarkremark.R
+import com.example.landmarkremark.model.Remark
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntryBottomSheet(
     sheetScaffoldState: BottomSheetScaffoldState,
     onCancel: () -> Unit,
-    onSave: () -> Unit,
+    onSave: (String) -> Unit,
     modifier: Modifier = Modifier,
-    note: String? = null,
+    remark: Remark? = null,
     content: @Composable () -> Unit,
 ) {
+    var note by remember { mutableStateOf(remark?.note?: "") }
     BottomSheetScaffold(
         modifier = modifier,
         scaffoldState = sheetScaffoldState,
         sheetContent = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = stringResource(id = R.string.note_title),//"(${position.latitude}, ${position.longitude})",
-                    fontWeight = FontWeight.Bold,
-                )
+                if (remark != null) {
+                    Text(
+                        text = remark.userId,//"(${position.latitude}, ${position.longitude})",
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(
+                        text = "(${remark.latitude}, ${remark.longitude}",
+                        color = Color.Gray
+                    )
+                }
                 Divider()
                 TextField(
-                    value = note ?: "",
-                    placeholder = { Text(stringResource(R.string.note_content), color = Color.Gray) },
-                    onValueChange = {
-                        //ViewModel::updateCurrentNote
-                    },
+                    value = note,
+                    placeholder = { Text(stringResource(R.string.note), color = Color.Gray) },
+                    onValueChange = { note = it },
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
                 )
                 Row {
-                    IconButton(onClick = onSave) {
+                    IconButton(
+                        onClick = { onSave(note) }
+                    ) {
                         Icon(
                             imageVector = Icons.Default.Done,
                             contentDescription = stringResource(R.string.save_note),

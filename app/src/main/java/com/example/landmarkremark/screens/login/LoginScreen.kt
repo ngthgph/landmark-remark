@@ -32,13 +32,17 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.landmarkremark.R
 
 @Composable
 fun LoginScreen(
     signUp: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: LoginViewModel = hiltViewModel(),
 ) {
+    val uiState by viewModel.uiState
+
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,17 +63,19 @@ fun LoginScreen(
                 .sizeIn(maxWidth = dimensionResource(id = R.dimen.text_field)),
         ) {
             InputTextField(
-                onInput = {},
+                initial = uiState.email,
+                onInput = { viewModel.onEmailChange(it) },
                 placeholder = stringResource(R.string.email_address),
                 modifier = Modifier
                     .sizeIn(maxWidth = dimensionResource(id = R.dimen.text_field) )
             )
             InputTextField(
-                onInput = {},
+                initial = uiState.password,
+                onInput = { viewModel.onPasswordChange(it) },
                 placeholder = stringResource(R.string.password)
             )
             Text(
-                text = "Please register or login to be able to save your own data",
+                text = stringResource(R.string.please_register_or_login_to_be_able_to_save_your_own_data),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.Normal,
@@ -77,18 +83,18 @@ fun LoginScreen(
                 modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
             )
             DescriptionButton(
-                enabled = false,
+                enabled = true,
                 text = stringResource(R.string.sign_in),
-                onClick = {}
+                onClick = { viewModel.onSignInClick() }
             )
         }
         Row(
             horizontalArrangement = Arrangement.Center
         ) {
             ClickableText(
-                enabled = false,
+                enabled = true,
                 text = stringResource(R.string.forget_password),
-                onClick = {}
+                onClick = { viewModel.onForgotPasswordClick() }
             )
             Text(text = " / ")
             ClickableText(
@@ -147,18 +153,23 @@ fun DescriptionButton(
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun InputTextField(
-    onInput:(String) -> Unit,
+    onInput:((String) -> Unit)? = null,
     modifier: Modifier = Modifier,
+    onValueChange: ((String) -> Unit)? = null,
+    initial: String = "",
     placeholder: String = "",
     enabled: Boolean = true,
 ) {
-    var input by remember { mutableStateOf("") }
+    var input by remember { mutableStateOf(initial) }
     val keyboardController = LocalSoftwareKeyboardController.current
     OutlinedTextField(
         modifier = modifier.fillMaxWidth(),
         enabled = enabled,
         value = input,
-        onValueChange = { input = it},
+        onValueChange = {
+            input = it
+            onValueChange?.let { it1 -> it1(it) }
+                        },
         placeholder = {
             Text(
                 text = placeholder.replaceFirstChar { it.uppercase() },
@@ -170,7 +181,7 @@ fun InputTextField(
         ),
         keyboardActions = KeyboardActions(
             onDone = {
-                onInput(input)
+                onInput?.let { it(input) }
                 keyboardController?.hide()
             }
         ),
