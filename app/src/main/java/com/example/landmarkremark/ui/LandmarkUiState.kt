@@ -1,4 +1,4 @@
-package com.example.landmarkremark.data
+package com.example.landmarkremark.ui
 
 import com.google.android.gms.maps.model.LatLng
 
