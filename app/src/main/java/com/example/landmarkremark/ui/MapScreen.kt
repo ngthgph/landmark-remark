@@ -123,7 +123,7 @@ fun MapScreen(
                 },
             ) {
                 uiState.selectedLocation?.let {
-                    Marker(
+                    MarkerNote(
                         position = it,
                         title = "Note",
                     )
@@ -153,7 +153,7 @@ fun MapScreen(
 
 @Composable
 @GoogleMapComposable
-fun Marker(
+fun MarkerNote(
     position: LatLng,
     title: String? = null,
     note: String? = null,
