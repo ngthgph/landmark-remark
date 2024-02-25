@@ -10,8 +10,8 @@
     <th width="15%">Backlog</th>
     <th width="20%">Requirement</th>
     <th width="35%">Step</th>
-    <th width="15%">Problem</th>
-    <th width="10%">Tech Stack</th>
+    <th width="20%">Problem</th>
+    <th width="5%">Tech Stack</th>
   </tr>
   
   <tr>
