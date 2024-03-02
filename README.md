@@ -59,8 +59,9 @@
     <td>- Build UI for creating accounts: LoginScreen, SignUpScreen, AccountScreen
       <br> - Add Firebase Account Service
       <br> - Show Markers in Google Map for the list of saved notes of all users</td>
-    <td>- (Firebase) The document cannot be added to the collection
-      <br> - Can only create an anonymous account</td>
+    <td> <! -- - (Firebase) The document cannot be added to the collection-->  
+      <! -- - Can only create an anonymous account--> 
+    </td>
     <td>Firebase, Hilt <div> <br><b>10 hours</b></td>
   </tr>
   
@@ -70,8 +71,8 @@
     <td>Have a Search Bar to query notes based on text/user name</td>
     <td>- Add Search Bar to UI,
       <br> - Use query to get remarkId from inputed text (note/ user name)</td>
-    <td>Not yet</td>
     <td></td>
+    <td>Firebase, NoSQL <div> <b>3 hours</b></td>
   </tr>
   
 </table>
